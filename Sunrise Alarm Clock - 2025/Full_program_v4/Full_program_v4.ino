@@ -72,13 +72,13 @@ Ideas for funny messages to print to lcd using displayTime
 TESTING:
 
 TODO
-- toggle alarm to off, it should not do anything even when fadeStartTime passes
-- click displayTime when fadeStartTime is supposed to go off; try to prevent it, but it should come on anyways
-- if light is on - cannot change the alarm time or current time; the light will immediately turn off before I can change when I press the button
-- light should turn off if it is on and I change the menu
+- Test if time is saved in rtc even if board is disconnected
+- click displayTime when fadeStartTime is supposed to go off; try to prevent it, but the light should come on anyways
 
 DONE
 - does it work in most basic condition - light turns on at fadeStartTime
+- toggle alarm to off, it should not do anything even when fadeStartTime passes
+- if light is on - cannot change the alarm time or current time; the light will immediately turn off before I can change when I press the button
 
 
 */
@@ -693,7 +693,6 @@ bool joystickRight() {
 
 // MODIFIES: this - fadeStartTime
 // EFFECTS: sets fadeStartTime to be 20 minutes before the given alarmTime - depends on how long I want the fade in to be
-            // note: if you want the length of the fade to be different, change all the fadeLength vars
 void setFadeStartTime() {
 
   fadeStartTime = alarmTime;
@@ -708,21 +707,20 @@ void setFadeStartTime() {
   }
 }
 
-// EFFECTS: sets fadeStartTime to be 20 minutes before the given alarmTime - depends on how long I want the fade in to be
-            // note: if you want the length of the fade to be different, change all the fadeLength vars
-Ds1302::DateTime getFadeStartTime() {
+// EFFECTS: Returns the time fadeLength minutes before the given alarmTime
+Ds1302::DateTime getFadeStartTime(Ds1302::DateTime alarm) {
 
   int fadeLength = 20; // mins
 
-  Ds1302::DateTime fadeStart = alarmTime;
+  Ds1302::DateTime fadeStart = alarm;
 
-  if (alarmTime.minute >= fadeLength) {
-    fadeStartTime.minute = alarmTime.minute - fadeLength;
+  if (alarm.minute >= fadeLength) {
+    fadeStart.minute = alarm.minute - fadeLength;
   } else {
-    int minLeft = fadeLength - alarmTime.minute;
-    fadeStartTime.minute = 60 - minLeft;
-    if (alarmTime.hour > 0) fadeStartTime.hour = alarmTime.hour - 1; 
-    else fadeStartTime.hour = 23;
+    int minLeft = fadeLength - alarm.minute;
+    fadeStart.minute = 60 - minLeft;
+    if (alarm.hour > 0) fadeStart.hour = alarm.hour - 1; 
+    else fadeStart.hour = 23;
   }
 
   return fadeStart;
@@ -755,6 +753,9 @@ void daylightSavingChange(int change) {
 bool pastFadeStartTime(Ds1302::DateTime alarm) {
   // get fadeStartTime for the given alarm time
   // compare hour; if equal, compare minute; if equal, compare second; if equal, return true
+  Ds1302::DateTime fadeStart = getFadeStartTime(alarm);
+
+  return true;
 }
 
 // EFFECTS: Turns of the LED light
