@@ -57,7 +57,7 @@ DONE
 - Timer so that main menu turns off after no activity for some time
 - Add a menu option for daylight savings to move current time ahead/behind 1 hr
 - To make the program more robust, include a function to prevent 
-    the user from setting an alarm less than fadetime mins (currently 20 mins) from now
+    the user from setting an alarm less than fadeLength mins (currently 20 mins) from now
 
 
 NOTES:
@@ -166,7 +166,7 @@ unsigned long startTime; // starting time for activity timer
 
 const int ledPin = 9; // MOSFET control pin (SIG)
 bool lightIsOn = false; // keeps track of the state of the LED light; off initially
-float fadeTime = 20; // time in minutes for the light to go from 0 to full brightness
+float fadeLength = 20; // time in minutes for the light to go from 0 to full brightness
 int brightness = 0; // 0-255
 int brightnessMultiplier = 1; // Range from 1..*, the smaller the number the brighter it gets
 unsigned long long ledStartTime; // used for controlling light brightness
@@ -261,7 +261,7 @@ void loop() {
 // EFFECTS: Sets up the variable needed to start fading in the light in the while loop
 void setupFade() {
   lightIsOn = true;
-  waitTime = abs(round(fadeTime * (60L * 1000L) / 255.0)) * brightnessMultiplier; // * multiplier because I find full brightness too much
+  waitTime = abs(round(fadeLength * (60L * 1000L) / 255.0)) * brightnessMultiplier; // * multiplier because I find full brightness too much
   brightness = 1;
   analogWrite(ledPin, brightness);
   ledStartTime = millis();
@@ -696,8 +696,6 @@ bool joystickRight() {
             // note: if you want the length of the fade to be different, change all the fadeLength vars
 void setFadeStartTime() {
 
-  int fadeLength = 20; // mins
-
   fadeStartTime = alarmTime;
 
   if (alarmTime.minute >= fadeLength) {
@@ -708,6 +706,26 @@ void setFadeStartTime() {
     if (alarmTime.hour > 0) fadeStartTime.hour = alarmTime.hour - 1; 
     else fadeStartTime.hour = 23;
   }
+}
+
+// EFFECTS: sets fadeStartTime to be 20 minutes before the given alarmTime - depends on how long I want the fade in to be
+            // note: if you want the length of the fade to be different, change all the fadeLength vars
+Ds1302::DateTime getFadeStartTime() {
+
+  int fadeLength = 20; // mins
+
+  Ds1302::DateTime fadeStart = alarmTime;
+
+  if (alarmTime.minute >= fadeLength) {
+    fadeStartTime.minute = alarmTime.minute - fadeLength;
+  } else {
+    int minLeft = fadeLength - alarmTime.minute;
+    fadeStartTime.minute = 60 - minLeft;
+    if (alarmTime.hour > 0) fadeStartTime.hour = alarmTime.hour - 1; 
+    else fadeStartTime.hour = 23;
+  }
+
+  return fadeStart;
 }
 
 void daylightSavingChange(int change) {
@@ -731,9 +749,9 @@ void daylightSavingChange(int change) {
   rtc.setDateTime(&newTime);
 }
 
-// EFFECTS: Returns true if the current time is past the fadeStartTime of the given alarm time (less than fadeTime minutes before alarm should be going off)
-// - calculate the number of minutes based on current time & fadeTime and compare to alarm time
-// - Directly compare current time and fadeTime and see which is ahead - not taking into account day, month, year
+// EFFECTS: Returns true if the current time is past the fadeStartTime of the given alarm time (less than fadeLength minutes before alarm should be going off)
+// - calculate the number of minutes based on current time & fadeLength and compare to alarm time
+// - Directly compare current time and fadeLength and see which is ahead - not taking into account day, month, year
 bool pastFadeStartTime(Ds1302::DateTime alarm) {
   // get fadeStartTime for the given alarm time
   // compare hour; if equal, compare minute; if equal, compare second; if equal, return true
