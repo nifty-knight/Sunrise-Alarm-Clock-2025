@@ -30,6 +30,8 @@ void resetActivityTimer();
 /*
 TODO
 - Fix program so that the time is not reset every time the program starts
+- Write unit tests for each function in my code
+- Edit program to use getFadeStartTime() instead of setFadeStartTime() - TEST AFTER - THIS IS REFACTORING
 - change program to measure waitTime and ledStartTime in seconds rather than milliseconds so that the numbers are certain not to get too large
 - Fix contrast - need a potentiometer
 - Add function so that looking at menus doesn't affect the light turning on or not
@@ -69,10 +71,11 @@ Ideas for funny messages to print to lcd using displayTime
   - Do you really need to pee again? I need to sleep too...
   - ...it's the witching hour <emoji> <emoji>...
 
-TESTING:
+HARDWARE TESTING:
 
 TODO
 - Test if time is saved in rtc even if board is disconnected
+- Test that the program works the same after getFadeStartTime() replaces setFade...()
 - click displayTime when fadeStartTime is supposed to go off; try to prevent it, but the light should come on anyways
 
 DONE
@@ -294,9 +297,13 @@ bool pressed(int pin) {
 
 // EFFECTS: Guides user through setting a new time and returns the time
 Ds1302::DateTime userSetTime() {
+
+  Ds1302::DateTime currentTime;
+  rtc.getDateTime(&currentTime); 
+
   int hr = 1;
   int min = 0;
-  int year = 25;
+  int year = currentTime.year;
 
   String period = setPeriod();
   if (period.equals(PERIOD_ERROR)) {
@@ -322,14 +329,15 @@ Ds1302::DateTime userSetTime() {
     }
   }
 
-  Ds1302::DateTime time = { // note that day, month, year, dow are fairly random; only time matters here
+  Ds1302::DateTime time = { // note that day, month, dow are fairly random; only time (and year for the error) matters here
     .year = year,
-    .month = Ds1302::MONTH_APR,
-    .day = 26,
+    .month = currentTime.month,
+    .day = currentTime.day,
+    // .day = day,--> this should be the final version
     .hour = hr,
     .minute = min,
     .second = 0,
-    .dow = Ds1302::DOW_SAT
+    .dow = currentTime.dow
   };
 
   return time;
@@ -748,12 +756,17 @@ void daylightSavingChange(int change) {
 }
 
 // EFFECTS: Returns true if the current time is past the fadeStartTime of the given alarm time (less than fadeLength minutes before alarm should be going off)
+// - Makes no assumptions about the exact minute and hour of alarm and current times, even though currently both can only be set in increments of 15 minutes
 // - calculate the number of minutes based on current time & fadeLength and compare to alarm time
 // - Directly compare current time and fadeLength and see which is ahead - not taking into account day, month, year
 bool pastFadeStartTime(Ds1302::DateTime alarm) {
   // get fadeStartTime for the given alarm time
   // compare hour; if equal, compare minute; if equal, compare second; if equal, return true
   Ds1302::DateTime fadeStart = getFadeStartTime(alarm);
+
+  if () {
+
+  }
 
   return true;
 }
