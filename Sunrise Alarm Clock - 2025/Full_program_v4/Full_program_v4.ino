@@ -731,11 +731,12 @@ void daylightSavingChange(int change) {
   rtc.setDateTime(&newTime);
 }
 
-// EFFECTS: Returns true if the current time is past the fadeStartTime of the given alarm time
+// EFFECTS: Returns true if the current time is past the fadeStartTime of the given alarm time (less than fadeTime minutes before alarm should be going off)
 // - calculate the number of minutes based on current time & fadeTime and compare to alarm time
 // - Directly compare current time and fadeTime and see which is ahead - not taking into account day, month, year
 bool pastFadeStartTime(Ds1302::DateTime alarm) {
-
+  // get fadeStartTime for the given alarm time
+  // compare hour; if equal, compare minute; if equal, compare second; if equal, return true
 }
 
 // EFFECTS: Turns of the LED light
