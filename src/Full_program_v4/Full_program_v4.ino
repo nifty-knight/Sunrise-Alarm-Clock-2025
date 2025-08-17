@@ -26,66 +26,6 @@ void printCurrentTime();
 void printAlarmState();
 void resetActivityTimer();
 
-// Test LCD with buttons & joystick control & RTC module
-/*
-TODO
-- Fix program so that the time is not reset every time the program starts
-- Write unit tests for each function in the code
-- Edit program to use getFadeStartTime() instead of setFadeStartTime() - MAKE SURE TO TEST AFTER - THIS IS REFACTORING
-- change program to measure waitTime and ledStartTime in seconds rather than milliseconds so that the numbers are certain not to get too large
-- Fix contrast - need a potentiometer
-- Add function so that looking at menus doesn't affect the light turning on or not
-
-
-DONE
-- Get the LCD to print some message
-- Get the backlight to turn on and off
-- Get the current time to display and the backlight to turn on for 5 secs at the press of a button, then automatically turn off
-  - Note: ideally the person would be able to do other stuff while the backlight display is on
-  - Note: In this case I want a special button which just shows time and backlight - for night stuff, so it's ok
-- Get the button to work with the LCD - something happens when a button is pressed
-- Get the joystick to work with the LCD - switch menus when it is turned from side to side/up and down
-- Add a timer which turns off the lcd automatically if no human use after 25 secs - resets on button click/joystick movement
-- Create the program for menus to set alarm time & current time
-- Make custom icons for arrows, other fun things
-- add another button for nighttime display time
-- merge program with the mosfet and led lights one
-- Add 'back' functions for setting alarm time
-  - Add a cancel menu if joystickLeft() while on setPeriod
-  - Move back to the previous menu/Set previous menu again if joystickLeft() on any other set menu
-- Do the same (back function) for setting current time/user time
-- Make it so that reading alarm state is interruptible - press a button, and we return to the main menu
-- Make it so that reading current time is interruptible - press a button, and we return to the main menu
-- Timer so that main menu turns off after no activity for some time
-- Add a menu option for daylight savings to move current time ahead/behind 1 hr
-- To make the program more robust, include a function to prevent 
-    the user from setting an alarm less than fadeLength mins (currently 20 mins) from now
-
-
-NOTES:
-Ideas for funny messages to print to lcd using displayTime
-- "The time is now..." 
-  - LUNCHTIME
-  - Why are you awake? You have 1 hrs, 39 mins, and 56 secs of sleep time left
-  - 11AM!!! YOU'RE LATE FOR SCHOOL haha just kidding it's actually ___ (real time)
-  - Do you really need to pee again? I need to sleep too...
-  - ...it's the witching hour <emoji> <emoji>...
-
-HARDWARE TESTING:
-
-TODO
-- Test if time is saved in rtc even if board is disconnected
-- Test that the program works the same after getFadeStartTime() replaces setFade...()
-- click displayTime when fadeStartTime is supposed to go off; try to prevent it, but the light should come on anyways
-
-DONE
-- does it work in most basic condition - light turns on at fadeStartTime
-- toggle alarm to off, it should not do anything even when fadeStartTime passes
-- if light is on - cannot change the alarm time or current time; the light will immediately turn off before I can change when I press the button
-
-
-*/
-
 byte UpArrow[8] = {
   0b00000,
   0b00000,
@@ -152,7 +92,6 @@ bool alarmIsOn = false;        // initialized as off originally
 // Creates an LCD object. Parameters: (rs, enable, d4, d5, d6, d7)
 LiquidCrystal lcd(13, 11, 10, 8, 3, 2);
 const uint8_t backlightPin = A5; // A on LCD
-// const uint8_t backlightButtonPin = A4;  // NOTE: not used in final version
 bool displayOn = true;
 
 const uint8_t displayButtonPin = A3; // displays current time when pressed - previously A0
@@ -197,12 +136,10 @@ void setup() {
       .second = 0,
       .dow = Ds1302::DOW_SAT
     };
-    // TODO: This sets the current time on the clock and starts it; I shouldn't need it
-    // in the final version - add a cell battery to RTC to keep it going when disconnected
+
     rtc.setDateTime(&currentTime);
   }
 
-  // pinMode(backlightButtonPin, INPUT);
   pinMode(backlightPin, OUTPUT);
 
   // set up the LCD's number of columns and rows:
@@ -256,10 +193,6 @@ void loop() {
   }
 }
 
-// note that fading is kinda paused while user is busy on screen, but it shouldn't matter all that much since its not actively counting, it's waiting to hit some future time
-// note that fading will not work if user is in a menu screen when the alarm passes
-    // I could add the if to check in the function while loops
-
 // EFFECTS: Sets up the variable needed to start fading in the light in the while loop
 void setupFade() {
   lightIsOn = true;
@@ -286,6 +219,7 @@ bool nowIsTime(Ds1302::DateTime time) {
 
 // EFFECTS: Returns true if the button connected to the given pin is being pressed
 //          - note that the buttons I am using are backwards - let current flow when not pressed, block current when they are pressed - eg. 0 = pressed, 1 = not pressed
+// FOR INVERTED BUTTONS
 bool pressed(int pin) {
   if (digitalRead(pin)) {
     return false;
@@ -293,6 +227,17 @@ bool pressed(int pin) {
     return true;
   }
 }
+
+// EFFECTS: Returns true if the button connected to the given pin is being pressed
+//          - note that the buttons I am using are backwards - let current flow when not pressed, block current when they are pressed - eg. 0 = pressed, 1 = not pressed
+// FOR NON-INVERTED BUTTONS - uncomment the below pressed() function and comment out the above pressed() function
+// bool pressed(int pin) {
+//   if (digitalRead(pin)) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
 // EFFECTS: Guides user through setting a new time and returns the time
 Ds1302::DateTime userSetTime() {
@@ -756,14 +701,16 @@ void daylightSavingChange(int change) {
 
 // EFFECTS: Returns true if the current time is past the fadeStartTime of the given alarm time (less than fadeLength minutes before alarm should be going off)
 // - Makes no assumptions about the exact minute and hour of alarm and current times, even though currently both can only be set in increments of 15 minutes
+// Possible solutions
 // - calculate the number of minutes based on current time & fadeLength and compare to alarm time
 // - Directly compare current time and fadeLength and see which is ahead - not taking into account day, month, year
+// - create a list of all not-allowed times using fadeLength, compare each to current time
 bool pastFadeStartTime(Ds1302::DateTime alarm) {
   // get fadeStartTime for the given alarm time
-  // compare hour; if equal, compare minute; if equal, compare second; if equal, return true
   Ds1302::DateTime fadeStart = getFadeStartTime(alarm);
 
-  if () {
+  // TODO: complete this function
+  if (true) {
 
   }
 
