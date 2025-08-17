@@ -1,13 +1,11 @@
 # Sunrise-Alarm-Clock-2025
 
 Do you hate the sound of your alarm in the morning? Would you rather wake up peacefully, gently, and - most importantly - <i>quietly</i>?
-If so, consider making a Sunrise Alarm Clock! This repo is part of an [instructable tutorial]() on how to do just that.
+If so, consider making a Sunrise Alarm Clock! This repo is part of an [instructable tutorial](https://www.instructables.com/DIY-Sunrise-Alarm-Clock-With-Arduino/) on how to do just that.
 
 Note that Full_program_v3.5 is the most updated version; v4 is still in progress.
 
-TODO: add link to instructable
-
-For those who don't want to click suspicious hyperlinked text: 
+For those who don't want to click suspicious hyperlinked text: https://www.instructables.com/DIY-Sunrise-Alarm-Clock-With-Arduino/
 
 ## Clock User Instructions
 
