@@ -510,7 +510,7 @@ void setPage(int index) {
     lcd.setCursor(14, 0);
     printUpArrow();
     lcd.setCursor(0, 1);
-    lcd.print(" forward 1hr");
+    lcd.print("forwards 1hr");
     lcd.setCursor(14, 1);
     printDownArrow();
   } else if (index == 3) {
@@ -518,7 +518,7 @@ void setPage(int index) {
     lcd.setCursor(14, 0);
     printUpArrow();
     lcd.setCursor(0, 1);
-    lcd.print(" backward 1hr");
+    lcd.print("backwards 1hr");
     lcd.setCursor(14, 1);
     printDownArrow();
   } else if (index == 4) {
