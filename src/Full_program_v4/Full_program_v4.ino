@@ -30,8 +30,8 @@ void resetActivityTimer();
 /*
 TODO
 - Fix program so that the time is not reset every time the program starts
-- Write unit tests for each function in my code
-- Edit program to use getFadeStartTime() instead of setFadeStartTime() - TEST AFTER - THIS IS REFACTORING
+- Write unit tests for each function in the code
+- Edit program to use getFadeStartTime() instead of setFadeStartTime() - MAKE SURE TO TEST AFTER - THIS IS REFACTORING
 - change program to measure waitTime and ledStartTime in seconds rather than milliseconds so that the numbers are certain not to get too large
 - Fix contrast - need a potentiometer
 - Add function so that looking at menus doesn't affect the light turning on or not
@@ -247,7 +247,6 @@ void loop() {
   if (alarmIsOn && !lightIsOn && nowIsTime(fadeStartTime)) {
     setupFade();
   } else if (alarmIsOn && lightIsOn && (brightness < 255)) { // light is on, not at full brightness
-    // side note: I can NOT tell if the light is on using analogRead without lightIsOn var - it's in output mode
     if ((millis() - ledStartTime) >= waitTime) {
       brightness++;
       analogWrite(ledPin, brightness);

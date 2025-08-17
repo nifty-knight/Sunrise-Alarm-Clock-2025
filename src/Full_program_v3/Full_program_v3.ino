@@ -84,8 +84,6 @@ DONE
 
 */
 
-#include <Ds1302.h>
-
 byte UpArrow[8] = {
   0b00000,
   0b00000,
@@ -153,6 +151,7 @@ bool alarmIsOn = false;        // initialized as off originally
 LiquidCrystal lcd(13, 11, 10, 8, 3, 2);
 const uint8_t backlightPin = A5; // A on LCD
 // const uint8_t backlightButtonPin = A4;  // NOTE: not used in final version
+
 bool displayOn = true;
 
 const uint8_t displayButtonPin = A3; // displays current time when pressed - previously A0
