@@ -228,7 +228,6 @@ void loop() {
   if (alarmIsOn && !lightIsOn && nowIsTime(fadeStartTime)) {
     setupFade();
   } else if (alarmIsOn && lightIsOn && (brightness < 255)) { // light is on, not at full brightness
-    // side note: I can NOT tell if the light is on using analogREad without lightIsOn var - it's in output mode
     if ((millis() - ledStartTime) >= waitTime) {
       analogWrite(ledPin, brightness);
       brightness++;
@@ -237,10 +236,6 @@ void loop() {
 
   }
 }
-
-// note that fading is kinda paused while user is busy on screen, but it shouldn't matter all that much
-// note that fading will not work if user is in a menu screen when the alarm passes
-    // I could add the if to check in the function while loops
 
 // EFFECTS: Sets up the variable needed to start fading in the light in the while loop
 void setupFade() {
@@ -276,14 +271,11 @@ bool pressed(int pin) {
 }
 
 // EFFECTS: Guides user through setting a new time and returns the time
-// TODO 1: complete function
 Ds1302::DateTime userSetTime() {
   String period = "";
   int hr = -1;
   int min = -1;
 
-  // use while true loop to get input?
-  // should selectPage return an int?
   period = setPeriod();                         // choose am/pm
   hr = convertTo24HrTime(setHour(), period);  // 1-12
   min = setMin(); // 0, 15, 30, or 45
@@ -377,7 +369,7 @@ int setMin() {
   int cursor = 0;
   lcd.clear();
   lcd.setCursor(2, 0);
-  lcd.print("Set Min: 00 "); // NOTE: this has to change along w/ initial cursor number if changed
+  lcd.print("Set Min: 00 "); // NOTE: this has to change along w/ initial cursor number if changed -> coupling :(
   lcd.setCursor(14, 0);
   printUpArrow();
   lcd.setCursor(14, 1);
@@ -428,7 +420,6 @@ void selectPage(int index) {
       delay(delayTime);
       Ds1302::DateTime currentTime = userSetTime();
       rtc.setDateTime(&currentTime);
-      // TODO: note: probably don't need to keep current time as a variable- just get time from rtc
       printCurrentTime();
       break;
     }
@@ -534,7 +525,6 @@ void printAlarmState() {
 }
 
 // EFFECTS: Turns on the lcd display and backlight and shows the current time
-// TODO: Timer? So that it turns off after 5 secs
 void displayTime() {
   on();
   lcd.clear();
@@ -543,7 +533,7 @@ void displayTime() {
   lcd.setCursor(0, 1);
   Ds1302::DateTime now;
   rtc.getDateTime(&now);
-  lcd.print(getTime(now));  // TODO: actually display time here
+  lcd.print(getTime(now));
   delay(4000);
   off();
 }

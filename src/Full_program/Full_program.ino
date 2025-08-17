@@ -15,55 +15,6 @@ int convertTo24HrTime(int hr, String s);
 void printLeftArrow();
 void printRightArrow();
 
-// Test LCD with buttons & joystick control & RTC module
-/*
-TODO
-- add menu option to change how quick the brightness goes on by changing the multiplier (* 9) right now
-- Fix contrast - might just buy a potentiometer/steal one from sam
-- improve the program - remove unnecessary variables etc.
-- Add function so that looking at menus doesn't affect the light turning on or not
-- Add fun little easter eggs
-- If I wanted to make the program more robust, I could include functions to prevent 
-    the user from setting an alarm less than 20 mins from now
-
-
-DONE
-- Get the LCD to print some message
-- Get the backlight to turn on and off
-- Get the current time to display and the backlight to turn on for 5 secs at the press of a button, then automatically turn off
-  - Note: ideally the person would be able to do other stuff while the backlight display is on
-  - Note: In this case I want a special button which just shows time and backlight - for night stuff, so it's ok
-- Get the button to work with the LCD - something happens when a button is pressed
-- Get the joystick to work with the LCD - switch menus when it is turned from side to side/up and down
-- Add a timer which turns off the lcd automatically if no human use after 25 secs - resets on button click/joystick movement
-- Create the program for menus to set alarm time & current time
-- Make custom icons for arrows, other fun things
-- add another button for nighttime display time
-- merge program with the mosfet and led lights one
-
-NOTES:
-Ideas for funny messages to print to lcd using displayTime
-- "The time is now..." 
-  - LUNCHTIME
-  - Why are you awake? You have 1 hrs, 39 mins, and 56 secs of sleep time left
-  - 11AM!!! YOU'RE LATE FOR SCHOOL haha just kidding it's actually ___ (real time)
-  - Do you really need to pee again? I need to sleep too...
-  - ...it's the witching hour <emoji> <emoji>...
-
-TESTING:
-
-TODO
-- does it work in most basic condition - light turns on at fadeStartTime
-- toggle alarm to off, it should not do anything even when fadeStartTime passes
-- click displayTime when fadeStartTime is supposed to go off; try to prevent it, but it should come on anyways
-- if light is on - cannot change the alarm time or current time; the light will immediately turn off before I can change when I press the button
-- light should turn off if it is on and I change the menu
-
-DONE
-
-
-*/
-
 #include <Ds1302.h>
 
 byte RightArrow[8] = {
@@ -197,7 +148,6 @@ void loop() {
   if (alarmIsOn && !lightIsOn && nowIsTime(fadeStartTime)) {
     setupFade();
   } else if (alarmIsOn && lightIsOn && (brightness < 255)) { // light is on, not at full brightness
-    // side note: I can NOT tell if the light is on using analogREad without lightIsOn var - it's in output mode
     if ((millis() - ledStartTime) >= waitTime) {
       analogWrite(ledPin, brightness);
       brightness++;
