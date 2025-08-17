@@ -108,7 +108,7 @@ unsigned long startTime; // starting time for activity timer
 
 const int ledPin = 9; // MOSFET control pin (SIG)
 bool lightIsOn = false; // keeps track of the state of the LED light; off initially
-float fadeTime = 20; // time in minutes for the light to go from 0 to full brightness
+float fadeLength = 20; // time in minutes for the light to go from 0 to full brightness
 int brightness = 0; // 0-255
 int brightnessMultiplier = 1; // Range from 1..*, the smaller the number the brighter it gets
 unsigned long long ledStartTime; // used for controlling light brightness
@@ -196,7 +196,7 @@ void loop() {
 // EFFECTS: Sets up the variable needed to start fading in the light in the while loop
 void setupFade() {
   lightIsOn = true;
-  waitTime = abs(round(fadeTime * (60L * 1000L) / 255.0)) * brightnessMultiplier; // * multiplier if full brightness too much
+  waitTime = abs(round(fadeLength * (60L * 1000L) / 255.0)) * brightnessMultiplier; // * multiplier if full brightness too much
   brightness = 1;
   analogWrite(ledPin, brightness);
   ledStartTime = millis();
@@ -632,8 +632,6 @@ bool joystickRight() {
 // MODIFIES: this - fadeStartTime
 // EFFECTS: sets fadeStartTime to be 20 minutes before the given alarmTime - depends on how long I want the fade in to be
 void setFadeStartTime() {
-
-  int fadeLength = 20; // mins
 
   fadeStartTime = alarmTime;
 
