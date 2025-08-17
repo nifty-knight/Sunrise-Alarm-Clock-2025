@@ -55,11 +55,11 @@ However, currently any set alarm will have to be reset if the Arduino loses powe
 - This code is still being updated and improved, check back for better and more robust versions of the program!
 
 ## Features to add
-- Add interruptibility to all reads/displays, right now only some of them are interruptible
-- Include a function to prevent 
-    the user from setting an alarm less than fadetime mins (currently 20 mins) from now
-- Check that all functions to do with milliseconds and longs are subtraction - no addition to prevent rollover errors
 - Add unit testing framework
+- Add interruptibility to all reads/displays, right now only some of them are interruptible
+- Include a function to prevent the user from setting an alarm less than fadetime mins from now
+- Edit program to use getFadeStartTime() instead of setFadeStartTime() - all tests for program first - this is refactoring
+- Check that all functions to do with milliseconds and longs are subtraction - no addition to prevent rollover errors
 - Add function so that looking at menus doesn't affect the light turning on or not
 - Modify setHour() and setMin() functions to reduce coupling of cursor variable with magic number
 - Add fun messages to print to lcd using displayTime
