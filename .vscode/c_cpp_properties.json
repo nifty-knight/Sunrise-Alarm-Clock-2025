@@ -4,7 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "/src/libraries/**",
-                "${workspaceFolder}/src/libraries/LiquidCrystal/src",
+                "${workspaceFolder}/src/libraries/**",
                 "C:\\Users\\Laptop\\AppData\\Local\\Arduino15\\packages\\**"
             ],
             "defines": [
