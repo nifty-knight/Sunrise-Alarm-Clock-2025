@@ -1,6 +1,6 @@
 #include "AlarmSystem.cpp" // TODO: replace all with .h
 #include "DisplayController.h"
-#include "InputController.cpp"
+#include "InputController.h"
 
 // Pin numbers for the RTC Module - TODO: maybe I don't need these data members stored here, just add documentation for where they should go in rtc constructor
 const uint8_t PIN_CLK = 7;
@@ -8,8 +8,8 @@ const uint8_t PIN_DAT = 6;
 const uint8_t PIN_ENA = 5;  // RST on the module itself
 
 AlarmSystem alarmSystem;
-// DisplayController displayController;
-// InputController inputController;
+DisplayController displayController;
+InputController inputController;
 
 // Main file where program is run
 
