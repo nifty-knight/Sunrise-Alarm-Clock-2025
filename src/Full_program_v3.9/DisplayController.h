@@ -16,9 +16,12 @@ enum class Direction {
 class DisplayController : public Observer {
   private:
   // TODO: initialize all the variables that need initializing - note: maybe these should be passed in via constructor
-    const int readTime;
-    const int noActivityTime;
-    const uint8_t backlightPin;
+    // const int readTime;
+    // const int noActivityTime;
+    // const uint8_t backlightPin;
+    int readTime;
+    int noActivityTime;
+    uint8_t backlightPin;
     // LiquidCrystal lcd(13, 11, 10, 8, 3, 2); // TODO: You cannot instantiate an object in a class definition; if you really need this var, use a member initialization list
     uint8_t index;
     unsigned long startTime;
