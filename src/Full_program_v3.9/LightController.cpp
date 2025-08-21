@@ -1,0 +1,16 @@
+#include <Arduino.h>
+
+// Responsible for all functionality related to modifying the brightness of the LED light
+class LightController {
+  private:
+  // TODO: initialize all vars that need it
+    uint8_t ledPin;
+    uint8_t brightness;
+
+
+  public:
+    uint8_t getBrightness(); // note: uint8_t is an unsigned int iwth 8 bits, storing values from 0-255
+    void setBrightness(uint8_t b);
+    bool lightIsOn();
+    // void turnLightOff();
+};
