@@ -15,11 +15,11 @@ enum class Direction {
 // Responsible for displaying menus and visuals to the user via the LCD
 class DisplayController : public Observer {
   private:
-  // TODO: initialize all the variables that need initializing
+  // TODO: initialize all the variables that need initializing - note: maybe these should be passed in via constructor
     const int readTime;
     const int noActivityTime;
     const uint8_t backlightPin;
-    LiquidCrystal lcd;
+    // LiquidCrystal lcd(13, 11, 10, 8, 3, 2); // TODO: You cannot instantiate an object in a class definition; if you really need this var, use a member initialization list
     uint8_t index;
     unsigned long startTime;
     bool displayOn;
@@ -33,8 +33,13 @@ class DisplayController : public Observer {
     // void escape();
 
   public:
+    // DisplayController();
     void update(InputEvent i) override;
 };
 
 #endif
+
+// DisplayController::DisplayController() {
+  
+// }
 

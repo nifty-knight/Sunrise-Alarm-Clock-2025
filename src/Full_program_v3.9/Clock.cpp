@@ -31,7 +31,8 @@ Clock::Clock(uint8_t clk, uint8_t dat, uint8_t ena) {
 // Getter - No test cases
 Ds1302::DateTime Clock::getTime() {
   // TODO: stub
-  return Ds1302::DateTime t;
+  Ds1302::DateTime t;
+  return t;
 }
 
 // REQUIRES: t is a valid DateTime
