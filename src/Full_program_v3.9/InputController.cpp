@@ -1,3 +1,6 @@
+#ifndef INPUTCONTROLLER_H
+#define INPUTCONTROLLER_H
+
 // #include "Observer.cpp" // TODO: change these includes to be .h files
 #include "Subject.cpp"
 
@@ -7,3 +10,5 @@ class InputController : Subject {
     // const int delayTime; // note: should not need this line of code- use edge detection instead
     void notifyObservers(InputEvent i) override;
 };
+
+#endif
