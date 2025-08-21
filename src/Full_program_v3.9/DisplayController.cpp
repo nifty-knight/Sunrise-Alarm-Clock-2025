@@ -1,45 +1,6 @@
-#ifndef DISPLAYCONTROLLER_H
-#define DISPLAYCONTROLLER_H
+#include "DisplayController.h"
 
-#include "Observer.h" // TODO: Replace with .h
-#include <LiquidCrystal.h>
-
-// Represents arrow directions; TODO: may put in separate file if multiple classes need access
-enum class Direction {
-  LEFT,
-  RIGHT,
-  UP,
-  DOWN
-};
-
-// Responsible for displaying menus and visuals to the user via the LCD
-class DisplayController : public Observer {
-  private:
-  // TODO: initialize all the variables that need initializing - note: maybe these should be passed in via constructor
-    const int readTime;
-    const int noActivityTime;
-    const uint8_t backlightPin;
-    // LiquidCrystal lcd(13, 11, 10, 8, 3, 2); // TODO: You cannot instantiate an object in a class definition; if you really need this var, use a member initialization list
-    uint8_t index;
-    unsigned long startTime;
-    bool displayOn;
-
-    void on();
-    void off();
-    void setBacklight(bool s);
-    printArrow(Direction d);
-
-    // void select(); // Might use in implementation - don't have it all figured out yet
-    // void escape();
-
-  public:
-    // DisplayController();
-    void update(InputEvent i) override;
-};
-
-#endif
-
-// DisplayController::DisplayController() {
+DisplayController::DisplayController() {
   
-// }
+}
 
