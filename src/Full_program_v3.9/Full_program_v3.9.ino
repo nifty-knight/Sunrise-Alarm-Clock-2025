@@ -1,5 +1,5 @@
 #include "AlarmSystem.cpp" // TODO: replace all with .h
-#include "DisplayController.cpp"
+#include "DisplayController.h"
 #include "InputController.cpp"
 
 // Pin numbers for the RTC Module - TODO: maybe I don't need these data members stored here, just add documentation for where they should go in rtc constructor
