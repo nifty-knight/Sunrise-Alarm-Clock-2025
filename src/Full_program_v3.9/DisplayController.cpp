@@ -1,4 +1,7 @@
-#include "Observer.cpp" // TODO: Replace with .h
+#ifndef DISPLAYCONTROLLER_H
+#define DISPLAYCONTROLLER_H
+
+#include "Observer.h" // TODO: Replace with .h
 #include <LiquidCrystal.h>
 
 // Represents arrow directions; TODO: may put in separate file if multiple classes need access
@@ -32,3 +35,6 @@ class DisplayController : public Observer {
   public:
     void update(InputEvent i) override;
 };
+
+#endif
+

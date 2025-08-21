@@ -1,3 +1,6 @@
+#ifndef LIGHTCONTROLLER_H
+#define LIGHTCONTROLLER_H
+
 #include <Arduino.h>
 
 // Responsible for all functionality related to modifying the brightness of the LED light
@@ -14,3 +17,5 @@ class LightController {
     bool lightIsOn();
     // void turnLightOff();
 };
+
+#endif

@@ -1,4 +1,7 @@
-#include "Observer.cpp" // TODO: Replace with .h
+#ifndef ALARMSYSTEM_H
+#define ALARMSYSTEM_H
+
+#include "Observer.h"
 #include <Ds1302.h>
 
 // Controls the functionality of the clock & alarm system 
@@ -21,3 +24,5 @@ class AlarmSystem : public Observer {
     bool getAlarmState();
 
 };
+
+#endif
