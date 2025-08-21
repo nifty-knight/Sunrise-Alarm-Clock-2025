@@ -53,13 +53,16 @@ However, currently any set alarm will have to be reset if the Arduino loses powe
 - This code is still being updated and improved, check back for better and more robust versions of the program!
 
 ## Features to add
-- Add unit testing framework
+- Refactor program from procedural to object-oriented design principles & add unit testing framework
+- Modify syntax for const variables according to usual C++ convention
 - Add interruptibility to all reads/displays, right now only some of them are interruptible
 - Include a function to prevent the user from setting an alarm less than fadetime mins from now
+- add ability to set fadetime to user menu (increments of 5 mins, max 60 mins?)
 - Edit program to use getFadeStartTime() instead of setFadeStartTime() - all tests for program first - this is refactoring
 - Check that all functions to do with milliseconds and longs are subtraction - no addition to prevent rollover errors
-- Add function so that looking at menus doesn't affect the light turning on or not
 - Modify setHour() and setMin() functions to reduce coupling of cursor variable with magic number
+- Add function so that looking at menus doesn't affect the light turning on or not - multithreading/multiprocessing?
+- Add functionality so that alarm time and alarm state are saved even if the Arduino loses power/resets
 - Add fun messages to print to lcd using displayTime
     - "The time is now..." 
     - LUNCHTIME
