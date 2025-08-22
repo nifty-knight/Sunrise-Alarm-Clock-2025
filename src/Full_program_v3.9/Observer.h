@@ -6,7 +6,7 @@
 // abstract Observer in Subject-Observer pattern
 class Observer {
   public:
-    virtual void update(InputEvent i);
+    virtual void update(InputEvent i) = 0;
 };
 
 #endif
