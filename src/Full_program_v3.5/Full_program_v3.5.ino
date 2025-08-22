@@ -101,8 +101,8 @@ const int MAX_MENU_INDEX = 4;  // represents 5 allowed pages for main menu - set
 
 const uint8_t X_pin = A1;  // analog pin connected to X output of joystick
 const uint8_t Y_pin = A0; // analog pin connected to Y output of joystick
-int X_pos;
-int Y_pos;
+// int X_pos;
+// int Y_pos;
 
 unsigned long startTime; // starting time for activity timer
 
