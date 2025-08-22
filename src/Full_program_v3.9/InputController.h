@@ -19,13 +19,13 @@ class InputController : Subject {
 
     // void dropObserver(Observer o) override;
     void notifyObservers(InputEvent i) override;
-    void addObserver(Observer o) override;
+    void addObserver(Observer &o) override;
     bool pressed(uint8_t pin);
     bool joystickMoved(Direction d);
 
   public:
     InputController();
-    Observer getObserver(int index);
+    Observer* getObserver(int index);
 
 };
 

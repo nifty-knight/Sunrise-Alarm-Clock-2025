@@ -23,7 +23,7 @@ void InputController::notifyObservers(InputEvent i) {
 - check that each added is the one really in the list
 - check that each added is in the list in order of adding
 */
-void InputController::addObserver(Observer o) {
+void InputController::addObserver(Observer &o) {
   // TODO: stub
 }
 
@@ -33,8 +33,8 @@ bool InputController::pressed(uint8_t pin) {
   return false;
 }
 
-// EFFECTS: Returns the observer at the given index in list
+// EFFECTS: Returns a pointer to observer at the given index in list
 // Note: This is a helper function for testing purposes
-Observer InputController::getObserver(int index) {
+Observer* InputController::getObserver(int index) {
   // TODO: stub
 }
