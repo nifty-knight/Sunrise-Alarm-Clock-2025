@@ -5,6 +5,8 @@
 #include <LiquidCrystal.h>
 
 // Represents arrow directions; TODO: may put in separate file if multiple classes need access
+// TODO: accessed by DisplayController.h, InputController.h
+// #include "Direction.h" // TODO: uncomment if you end up putting Direction in separate file
 enum class Direction {
   LEFT,
   RIGHT,
