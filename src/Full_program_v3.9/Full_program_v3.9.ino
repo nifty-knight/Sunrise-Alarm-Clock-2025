@@ -1,4 +1,4 @@
-#include "AlarmSystem.cpp" // TODO: replace all with .h
+#include "AlarmSystem.h" // TODO: replace all with .h
 #include "DisplayController.h"
 #include "InputController.h"
 
@@ -31,6 +31,7 @@ void loop() {
 
 /* Current coding TODOs:
 - Create .cpp files with stub functions and fields for all classes
+- Add necessary pin parameters for all constructors - I don't think I did this for light, input, etc.
 - Create test scenarios for all functions (don't implement a full testing framework YET)
 - implement some testing + test framework for more easily tested functions/classes - put it in a different folder than the this sketch
 - Add one-line class description above class declaration for all .cpp files
