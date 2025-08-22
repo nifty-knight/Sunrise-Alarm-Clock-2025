@@ -22,11 +22,37 @@
 
 #include "LightController.h"
 
+// EFFECTS: Initializes LED output pin, resets brightness
 LightController::LightController() {
   // TODO: stub
 }
 
+// EFFECTS: returns current light brightness
+// Getter - no test cases
 uint8_t LightController::getBrightness() {
   // TODO: stub
-  return 1;
+  return 0;
+}
+
+// REQUIRES: b in [0, 255]
+// MODIFIES: brightness
+// EFFECTS: Sets brightness to given value
+/*Test cases
+- setBrightness(0) --> getBrightness() returns 0
+- setBrightness(14) twice --> getBrightness() returns 14
+- setBrightness(255) --> getBrightness() returns 255
+*/
+void LightController::setBrightness(uint8_t b) {
+  // TODO: stub
+}
+
+// EFFECTS: returns true if brightness is not equal to zero
+/*Test cases
+- brightness = 0; lightIsOn() --> false
+- brightness = 1; lightIsOn() --> true
+- brightness = 255; lightIsOn() --> true
+*/
+bool LightController::lightIsOn() {
+  // TODO: stub
+  return false;
 }
