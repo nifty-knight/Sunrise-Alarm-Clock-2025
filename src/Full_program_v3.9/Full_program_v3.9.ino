@@ -31,16 +31,19 @@ void loop() {
 
 /* Current coding TODOs:
 - Create .cpp files with stub functions and fields for all classes
-- Add necessary pin parameters for all constructors - I don't think I did this for light, input, etc.
+- Add enum class for the different possible menus
+- Add necessary pin parameters for all constructors
 - Create test scenarios for all functions (don't implement a full testing framework YET)
 - implement some testing + test framework for more easily tested functions/classes - put it in a different folder than the this sketch
+- add testing for constructors
 - Add one-line class description above class declaration for all .cpp files
 - Add .h files for all .cpp files
 - Modify all includes to include .h, not .cpp
 - Ensure there is documentation for all fields & functions
 
 - Note: Do I want an init() function for LightController, Clock, etc? Maybe. We'll see in implementation if that makes it any easier
-
+- It may turn out that DisplayController is the overarching controlling master class
+  and may need to hold a field of AlarmSystem - in which case AlarmSystem may not need to be an observer of InputController
 
 
 */
