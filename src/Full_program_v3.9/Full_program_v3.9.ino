@@ -39,6 +39,7 @@ void loop() {
 - Modify all includes to include .h, not .cpp
 - Ensure there is documentation for all fields & functions
 
+- Note: Do I want an init() function for LightController, Clock, etc? Maybe. We'll see in implementation if that makes it any easier
 
 
 
