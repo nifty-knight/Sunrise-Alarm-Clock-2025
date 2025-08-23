@@ -1,7 +1,7 @@
 #include "InputController.h"
 
 // EFFECTS: Initializes input pins for input devices
-InputController::InputController() {
+InputController::InputController(uint8_t timeButtonPin, uint8_t selectButtonPin, uint8_t xPin, uint8_t yPin) {
 
 }
 

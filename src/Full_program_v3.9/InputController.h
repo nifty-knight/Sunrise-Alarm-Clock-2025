@@ -27,7 +27,7 @@ class InputController : Subject {
     Direction joystickMoved();
 
   public:
-    InputController();
+    InputController(uint8_t timeButtonPin, uint8_t selectButtonPin, uint8_t xPin, uint8_t yPin);
     Observer* getObserver(int index);
 
 };

@@ -23,7 +23,7 @@
 #include "LightController.h"
 
 // EFFECTS: Initializes LED output pin, resets brightness
-LightController::LightController() {
+LightController::LightController(uint8_t ledPin) {
   // TODO: stub
 }
 
