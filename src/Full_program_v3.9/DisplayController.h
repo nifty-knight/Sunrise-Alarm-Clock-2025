@@ -11,7 +11,8 @@ enum class Direction {
   LEFT,
   RIGHT,
   UP,
-  DOWN
+  DOWN,
+  NONE
 };
 
 // Responsible for displaying menus and visuals to the user via the LCD
@@ -32,7 +33,7 @@ class DisplayController : public Observer {
     void on();
     void off();
     void setBacklight(bool s);
-    void printArrow(Direction d);
+    void printArrow(Direction d); // TODO: note that it requires direction != NONE
 
     // void select(); // Might use in implementation - don't have it all figured out yet
     // void escape();
