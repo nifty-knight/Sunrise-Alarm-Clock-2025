@@ -1,4 +1,4 @@
-#include "AlarmSystem.h" // TODO: replace all with .h
+#include "AlarmSystem.h"
 #include "DisplayController.h"
 #include "InputController.h"
 
@@ -7,9 +7,9 @@ const uint8_t PIN_CLK = 7;
 const uint8_t PIN_DAT = 6;
 const uint8_t PIN_ENA = 5;  // RST on the module itself
 
-AlarmSystem alarmSystem;
-DisplayController displayController;
-InputController inputController;
+// AlarmSystem alarmSystem;
+// DisplayController displayController;
+// InputController inputController;
 
 // Main file where program is run
 
