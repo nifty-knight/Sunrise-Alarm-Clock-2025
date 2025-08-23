@@ -16,12 +16,15 @@ class InputController : Subject {
     uint8_t selectButtonPin;
     uint8_t xPin; // joystick x pin
     uint8_t yPin; // joystick y pin
+    bool timePinState;
+    bool selectPinState;
+    Direction joystickState;
 
     // void dropObserver(Observer o) override;
     void notifyObservers(InputEvent i) override;
     void addObserver(Observer &o) override;
-    bool pressed(uint8_t pin);
-    bool joystickMoved(Direction d);
+    bool pressed(uint8_t pin, bool* pinState);
+    Direction joystickMoved();
 
   public:
     InputController();
