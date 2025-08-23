@@ -3,7 +3,7 @@
 // EFFECTS: Initializes rtc module & pins
 //  TODO: add autofilled null/none parameter for time, modify constructor to sets rtc to given time if one is given
 Clock::Clock(uint8_t clk, uint8_t dat, uint8_t ena) {
-
+  // TODO: stub
 }
 
 // EFFECTS: Returns current time on rtc
