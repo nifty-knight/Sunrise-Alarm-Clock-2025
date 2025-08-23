@@ -60,9 +60,9 @@ bool InputController::pressed(uint8_t pin, bool* pinState) {
 - Check function behaviour: what if it is moved in multiple directions at the same time?
   - will only return one direction; prioritizes up & down directions over right/left
 */
-Direction InputController::joystickMoved() {
+InputEvent InputController::joystickMoved() {
   // TODO: stub
-  return Direction::DOWN;
+  return InputEvent::JoystickDown;
 }
 
 // EFFECTS: Returns a pointer to observer at the given index in list
