@@ -5,12 +5,8 @@
 #include <Arduino.h>
 
 class GenericPage : public MenuItem {
-  private:
-    String line1;
-    String line2;
-
   public:
-    GenericPage();
+    GenericPage(String line1, String line2) : MenuItem(line1, line2) {};
     void display() override = 0;
 };
 
