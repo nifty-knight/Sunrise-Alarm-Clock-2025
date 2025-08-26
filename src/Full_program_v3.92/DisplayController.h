@@ -1,7 +1,7 @@
 #ifndef DISPLAYCONTROLLER_H
 #define DISPLAYCONTROLLER_H
 
-#include "Observer.h" // TODO: Replace with .h
+#include "InputEvent.h"
 #include <LiquidCrystal.h>
 
 // Represents arrow directions; TODO: may put in separate file if multiple classes need access
@@ -16,7 +16,7 @@ enum class Direction {
 };
 
 // Responsible for displaying menus and visuals to the user via the LCD
-class DisplayController : public Observer {
+class DisplayController {
   private:
   // TODO: initialize all the variables that need initializing - note: maybe these should be passed in via constructor
     const int readTime;
@@ -40,7 +40,7 @@ class DisplayController : public Observer {
 
   public:
     DisplayController(int readTime, int noActivityTime, uint8_t backlightPin);
-    void update(InputEvent i) override;
+    void update(InputEvent i);
 };
 
 #endif

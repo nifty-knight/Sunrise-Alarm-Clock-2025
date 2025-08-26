@@ -5,7 +5,11 @@ InputController::InputController(uint8_t timeButtonPin, uint8_t selectButtonPin,
 
 }
 
-// TODO: docs
+// EFFECTS: Returns the current input event
+/*Test cases
+- Test all events
+- note: must also be tested with hardware for full testing
+*/
 InputEvent InputController::update() {
   // TODO: stub
   return InputEvent::None;
