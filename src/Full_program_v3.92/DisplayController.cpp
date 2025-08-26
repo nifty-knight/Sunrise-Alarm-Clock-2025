@@ -14,5 +14,40 @@ DisplayController::DisplayController(int readTime, int noActivityTime, uint8_t b
 - 
 */
 void DisplayController::update(InputEvent i) {
+  // TODO: stub
+}
 
+// MODIFIES: displayOn
+// EFFECTS: Turns on the lcd backlight and display
+/*Test cases - must be hardware tested
+- when it is called, display and backlight both turn on
+*/
+void DisplayController::on() {
+  // TODO: stub
+}
+
+// MODIFIES: displayOn
+// EFFECTS: Turns off the lcd backlight and display
+/*Test cases - must be hardware tested
+- when it is called, display and backlight both turn off
+*/
+void DisplayController::off() {
+  // TODO: stub
+}
+
+// EFFECTS: sets the backlight on or off based on bool given (true = on, false = off)
+/*Test cases - must be hardware tested
+- setBacklight(true) --> backlight on
+- setBacklight(false) --> backlight off
+*/
+void DisplayController::setBacklight(bool s) {
+  // TODO: stub
+}
+
+// EFFECTS: prints an arrow on the lcd display at the current cursor location
+/*Test cases - must be hardware tested
+- Check that each direction arrow prints out correctly
+*/
+void DisplayController::printArrow(Direction d) {
+  // TODO: stub
 }
