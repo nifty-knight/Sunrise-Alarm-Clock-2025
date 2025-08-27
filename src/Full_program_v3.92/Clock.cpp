@@ -2,6 +2,7 @@
 
 // EFFECTS: Initializes rtc module & pins
 //  TODO: add autofilled null/none parameter for time, modify constructor to sets rtc to given time if one is given
+// Tested in hardware
 Clock::Clock(uint8_t clk, uint8_t dat, uint8_t ena) {
   // TODO: stub
 }
@@ -16,7 +17,7 @@ Ds1302::DateTime Clock::getTime() {
 
 // REQUIRES: t is a valid DateTime
 // EFFECTS: Sets rtc to given time
-/* Test cases
+/* Test cases - must be tested in hardware since time is not stored in arduino
 - setTime(8:32 am); getTime() should return 8:32 am
 - setTime(3:00 pm); getTime() should return 3:00 pm
 - setTime(1:00 am); getTime() should return 1:00 am
