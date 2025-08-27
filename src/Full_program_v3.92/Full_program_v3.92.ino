@@ -30,8 +30,8 @@ void loop() {
 }
 
 /* Current coding TODOs:
-- implement some testing + test framework for more easily tested functions/classes - put it in a different folder than the this sketch
-- add testing for constructors
+- Ok we're going to skip the unit testing for now - too much trouble for not enough value
+- Uncomment headers that were commented out for testing purposes (Clock.h, )
 - Add one-line class description above class declaration for all .h files
 - Ensure there is documentation for all fields & functions
 - Add enum class for the different possible menus?
