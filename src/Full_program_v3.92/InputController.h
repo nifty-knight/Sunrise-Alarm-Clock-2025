@@ -11,17 +11,16 @@ class InputController {
   private:
     // TODO: initialize all vars that need it
     // const int delayTime; // note: should not need this line of code- use edge detection instead
-    // TODO: might make button/joystick pin variables constant
     // TODO: probably should put the variables in a list for easier access when writing update()
-    uint8_t timeButtonPin; // note: same as displayButtonPin
-    uint8_t selectButtonPin;
-    uint8_t xPin; // joystick x pin
-    uint8_t yPin; // joystick y pin
+    const uint8_t timeButtonPin; // note: same as displayButtonPin
+    const uint8_t selectButtonPin;
+    const uint8_t xPin; // joystick x pin
+    const uint8_t yPin; // joystick y pin
     bool timePinState;
     bool selectPinState;
     InputEvent joystickState;
 
-    bool pressed(uint8_t pin, bool* pinState);
+    bool pressed(uint8_t pin, bool& pinState);
     InputEvent joystickMoved();
 
   public:
