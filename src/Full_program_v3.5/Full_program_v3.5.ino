@@ -396,7 +396,7 @@ int setMin() {
 // EFFECTS: Takes an hour in 12-hr time and AM or PM, and determines the time in 24-hr time
 int convertTo24HrTime(int hour, String period) {
   if (period == "PM") {
-    return hour += 11;
+    return hour + 11;
   } else return hour - 1;
 }
 
