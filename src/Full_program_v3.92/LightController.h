@@ -7,7 +7,7 @@
 class LightController {
   private:
   // TODO: initialize all vars that need it - may not store ledPin, but take it in via constructor
-    uint8_t ledPin; // TODO: note that ledPin must be a PWM pin
+    const uint8_t ledPin; // TODO: add documentation (in main) noting that ledPin must be a PWM pin
     uint8_t brightness;
 
 
