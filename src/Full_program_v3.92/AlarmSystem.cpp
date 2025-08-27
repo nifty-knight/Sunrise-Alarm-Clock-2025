@@ -8,7 +8,7 @@ AlarmSystem::AlarmSystem(uint8_t fadeTime, uint8_t clk, uint8_t dat, uint8_t ena
 }
 
 // EFFECTS: Updates the state of the light and clock as necessary
-/*Test cases
+/*Test cases - tested in hardware
 - update(SelectButtonPressed) --> turn light off if it is on, nothing otherwise
 - Ignore all other events - do the same thing in any case
 - Check that light turns on at the correct time
