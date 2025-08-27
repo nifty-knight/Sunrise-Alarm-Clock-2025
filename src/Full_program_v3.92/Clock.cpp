@@ -3,15 +3,29 @@
 // EFFECTS: Initializes rtc module & pins
 //  TODO: add autofilled null/none parameter for time, modify constructor to sets rtc to given time if one is given
 // Tested in hardware
-Clock::Clock(uint8_t clk, uint8_t dat, uint8_t ena) {
-  // TODO: stub
+Clock::Clock(uint8_t clk, uint8_t dat, uint8_t ena) : rtc(clk, dat, ena) {
+  rtc.init();
+
+  if (rtc.isHalted()) {
+    Ds1302::DateTime currentTime = {
+      .year = 2025,
+      .month = Ds1302::MONTH_AUG,
+      .day = 26,
+      .hour = 18,
+      .minute = 45,
+      .second = 0,
+      .dow = Ds1302::DOW_TUE
+    };
+
+    rtc.setDateTime(&currentTime);
+  }
 }
 
 // EFFECTS: Returns current time on rtc
 // Getter - No test cases
 Ds1302::DateTime Clock::getTime() {
-  // TODO: stub
   Ds1302::DateTime t;
+  rtc.getDateTime(&t);
   return t;
 }
 
@@ -24,7 +38,7 @@ Ds1302::DateTime Clock::getTime() {
 - setTime(12:59 pm); getTime() should return 12:59 pm
 */
 void Clock::setTime(Ds1302::DateTime t) {
-  // TODO: stub
+    rtc.setDateTime(&t);
 }
 
 // REQUIRES: hr is in [1, 12]
@@ -37,8 +51,14 @@ void Clock::setTime(Ds1302::DateTime t) {
 - convertTo24HrTime(12, "PM") --> 23
 */
 uint8_t convertTo24HrTime(uint8_t hr, String period) {
-  // TODO: stub
-  return 0;
+  if (period == AM) {
+    return hr - 1;
+  } else if (period == PM) {
+    return hr + 11;
+  }
+
+  // Signifies error - this line should never run
+  return -1;
 }
 
 
