@@ -3,6 +3,8 @@
 // EFFECTS: Initializes LED output pin, resets brightness
 LightController::LightController(uint8_t ledPin) : ledPin(ledPin) {
   pinMode(ledPin, OUTPUT);
+  brightness = 0;
+  this->setBrightness(brightness);
 }
 
 // EFFECTS: returns current light brightness
@@ -22,6 +24,17 @@ uint8_t LightController::getBrightness() {
 void LightController::setBrightness(uint8_t b) {
   brightness = b;
   analogWrite(ledPin, brightness);
+}
+
+// MODIFIES: brightness
+// EFFECTS: If brightness is less than 255, increase the brightness of the light by 1
+// TODO: not the best here with resetting brightness and all that; might make setBrightness private
+//       and add a public turnLightOff function
+void LightController::increaseBrightness() {
+  if (brightness < 255) {
+    brightness++;
+    setBrightness(brightness);
+  }
 }
 
 // EFFECTS: returns true if brightness is not equal to zero

@@ -15,6 +15,7 @@ class LightController {
     LightController(uint8_t ledPin);
     uint8_t getBrightness(); // note: uint8_t is an unsigned int iwth 8 bits, storing values from 0-255
     void setBrightness(uint8_t b);
+    void increaseBrightness();
     bool lightIsOn();
     // void turnLightOff();
 };
