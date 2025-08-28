@@ -630,7 +630,7 @@ bool joystickRight() {
 }
 
 // MODIFIES: this - fadeStartTime
-// EFFECTS: sets fadeStartTime to be 20 minutes before the given alarmTime - depends on how long I want the fade in to be
+// EFFECTS: sets fadeStartTime to be fadeLength minutes before the given alarmTime - depends on how long I want the fade in to be
 void setFadeStartTime() {
 
   fadeStartTime = alarmTime;
