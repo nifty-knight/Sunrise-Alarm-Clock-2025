@@ -5,8 +5,8 @@
 #include <Ds1302.h>
 
 // TODO: might delete/replace if necessary for saving space
-String AM = "AM";
-String PM = "PM";
+// String AM = "AM";
+// String PM = "PM";
 
 // Responsible for all functions dealing with the time tracked by the RTC
 class Clock {
@@ -16,6 +16,9 @@ class Clock {
     // const uint8_t PIN_ENA = 5;  // RST on the module itself
     Ds1302 rtc;
   public:
+    static const String AM;
+    static const String PM;
+
     Clock(uint8_t clk, uint8_t dat, uint8_t ena);
     Ds1302::DateTime getTime();
     void setTime(Ds1302::DateTime t);

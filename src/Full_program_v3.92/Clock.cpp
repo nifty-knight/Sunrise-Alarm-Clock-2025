@@ -1,5 +1,8 @@
 #include "Clock.h"
 
+const String AM = "AM";
+const String PM = "PM";
+
 // EFFECTS: Initializes rtc module & pins
 //  TODO: add autofilled null/none parameter for time, modify constructor to sets rtc to given time if one is given
 // Tested in hardware
@@ -51,9 +54,9 @@ void Clock::setTime(Ds1302::DateTime t) {
 - convertTo24HrTime(12, "PM") --> 23
 */
 uint8_t convertTo24HrTime(uint8_t hr, String period) {
-  if (period == AM) {
+  if (period == Clock::AM) {
     return hr - 1;
-  } else if (period == PM) {
+  } else if (period == Clock::PM) {
     return hr + 11;
   }
 
