@@ -54,6 +54,7 @@ However, currently any set alarm will have to be reset if the Arduino loses powe
 
 ## Features to add
 - Refactor program from procedural to object-oriented design principles & add unit testing framework
+- Update v3.92 to use unsigned longs for direct calculations instead of longs (eg. use 60UL instead of 60L)
 - Modify syntax for const variables according to usual C++ convention
 - Add interruptibility to all reads/displays, right now only some of them are interruptible
 - Include a function to prevent the user from setting an alarm less than fadetime mins from now
