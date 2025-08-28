@@ -2,6 +2,11 @@
 
 // EFFECTS: Initializes input pins for input devices
 InputController::InputController(uint8_t timeButtonPin, uint8_t selectButtonPin, uint8_t xPin, uint8_t yPin) : timeButtonPin(timeButtonPin), selectButtonPin(selectButtonPin), xPin(xPin), yPin(yPin) {
+  pinMode(xPin, INPUT);
+  pinMode(xPin, INPUT);
+  pinMode(selectButtonPin, INPUT);
+  pinMode(timeButtonPin, INPUT);
+  
   timePinState = false;
   selectPinState = false;
   joystickState = InputEvent::None;
