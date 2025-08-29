@@ -7,25 +7,21 @@ const uint8_t PIN_CLK = 7;
 const uint8_t PIN_DAT = 6;
 const uint8_t PIN_ENA = 5;  // RST on the module itself
 
-// AlarmSystem alarmSystem;
-// DisplayController displayController;
-// InputController inputController;
+DisplayController displayController(13, 11, 10, 8, 3, 2, 3500, 20000, A5, 
+                                    AlarmSystem(20, 7, 6, 5, 9));
+InputController inputController(A3, A4, A1, A0);
 
 // Main file where program is run
 
 void setup() {
-  // put your setup code here, to run once:
-  // alarmSystem = AlarmSystem();
-  // displayController = DisplayController();
-  // inputController = InputController();
+
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-
-  // inputController.update();
-  // displayController.update(InputEvent::None); // note: don't know if this will mess with the program's operations; might not need this function, and only updates on inputController call
-  // alarmSystem.update(InputEvent::None);
+  InputEvent i = inputController.update();
+  displayController.update(i);
+  // alarmSystem.update(i); // note: this is done inside displayController
   
 }
 
