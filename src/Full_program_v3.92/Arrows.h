@@ -3,6 +3,7 @@
 
 #include "Arduino.h"
 
+// Represents character arrays for arrows stored in lcd
 byte UpArrow[8] = {
   0b00000,
   0b00000,
