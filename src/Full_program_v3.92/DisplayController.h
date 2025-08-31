@@ -3,18 +3,8 @@
 
 #include "InputEvent.h"
 #include "AlarmSystem.h"
+#include "Direction.h"
 #include <LiquidCrystal.h>
-
-// Represents arrow directions; TODO: may put in separate file if multiple classes need access
-// TODO: accessed by DisplayController.h
-// #include "Direction.h" // TODO: uncomment if you end up putting Direction in separate file
-enum class Direction {
-  LEFT,
-  RIGHT,
-  UP,
-  DOWN,
-  NONE
-};
 
 // Responsible for displaying menus and visuals to the user via the LCD
 class DisplayController {
