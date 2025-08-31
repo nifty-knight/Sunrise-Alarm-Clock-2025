@@ -1,6 +1,7 @@
 #ifndef MENUITEM.H
 #define MENUITEM.H
 
+#include "Direction.h"
 #include <Arduino.h>
 
 class MenuItem {
@@ -13,6 +14,7 @@ class MenuItem {
       line2 = line2;
     }; // use super() in subclasses
     virtual void display() = 0;
+    virtual void joystickResponse(Direction d) = 0;
 };
 
 #endif

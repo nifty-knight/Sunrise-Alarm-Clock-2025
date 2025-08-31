@@ -8,6 +8,7 @@ class GenericPage : public MenuItem {
   public:
     GenericPage(String line1, String line2) : MenuItem(line1, line2) {};
     void display() override = 0;
+    void joystickResponse(Direction d) override = 0;
 };
 
 #endif

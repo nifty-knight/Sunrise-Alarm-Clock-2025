@@ -11,6 +11,13 @@ void RangedSelectionPage::display() {
   // TODO: stub
 }
 
+// EFFECTS: updates the number on lcd display based on joystick direction,
+//          ignores directions other than up/down
+// TODO: make increase() and decrease() private
+void RangedSelectionPage::joystickResponse(Direction d) {
+  // TODO: stub
+}
+
 // REQUIRES: last page displayed was this RangedSelectionPage (since it only changes the number)
 // EFFECTS: displays page with number decreased by one step unless already displaying minimum number
 /*Test cases - test in hardware

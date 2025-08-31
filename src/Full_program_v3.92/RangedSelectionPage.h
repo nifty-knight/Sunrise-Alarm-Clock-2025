@@ -15,6 +15,7 @@ class RangedSelectionPage : public GenericPage {
     // TODO: change from ints to uint8_t if trying to save space
     RangedSelectionPage(String line1, String line2, int minn, int maxn, int step);
     void display() override;
+    void joystickResponse(Direction d) override;
     void increase();
     void decrease();
 

@@ -1,8 +1,9 @@
 #include "Menu.h"
+// #include "Direction.h"
 
 // REQUIRES: pages contains equal to or less than the max number of pages allowed in Menu.h
 // EFFECTS: Initializes menu, adds pages to menu
-Menu::Menu(String line1, String line2, MenuItem* pages) : MenuItem(line1, line2) {
+Menu::Menu(String line1, String line2, MenuItem* pages) : MenuItem(line1, line2), pages(pages) {
   
   // TODO: stub
 }
@@ -11,6 +12,10 @@ Menu::Menu(String line1, String line2, MenuItem* pages) : MenuItem(line1, line2)
 // Tested in hardware
 void Menu::display() {
   // TODO: stub
+}
+
+void Menu::joystickResponse(Direction d) {
+
 }
 
 // REQUIRES: index is valid and within range of pages
