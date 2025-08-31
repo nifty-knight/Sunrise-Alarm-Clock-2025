@@ -2,8 +2,8 @@
 #include "Arrows.h"
 
 // EFFECTS: initializes needed variables + output pin for LED
-DisplayController::DisplayController(uint8_t rs, uint8_t enable, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7, int readTime, int noActivityTime, uint8_t backlightPin, AlarmSystem alarmSystem) : 
-        lcd(rs, enable, d4, d5, d6, d7), readTime(readTime), noActivityTime(noActivityTime), backlightPin(backlightPin), alarmSystem(alarmSystem) {
+DisplayController::DisplayController(uint8_t rs, uint8_t enable, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7, int readTime, int noActivityTime, uint8_t backlightPin) : 
+        lcd(rs, enable, d4, d5, d6, d7), readTime(readTime), noActivityTime(noActivityTime), backlightPin(backlightPin) {
   // TODO: stub    
   index = 0;
   pinMode(backlightPin, OUTPUT);
@@ -26,7 +26,7 @@ DisplayController::DisplayController(uint8_t rs, uint8_t enable, uint8_t d4, uin
 */
 void DisplayController::update(InputEvent i) {
   // TODO: stub
-  alarmSystem.update(i);
+  // AlarmSystem::getInstance().update(i);
 }
 
 // MODIFIES: displayOn

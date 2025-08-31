@@ -1,4 +1,5 @@
 #include "AlarmSystem.h"
+#include <Arduino.h>
 
 // EFFECTS: initializes necessary fields & subclass objects & set initial alarmTime to 1:00am
 // TODO: maybe include alarmTime as an optional parameter?
@@ -6,6 +7,18 @@ AlarmSystem::AlarmSystem(uint8_t fadeTime, uint8_t clk, uint8_t dat, uint8_t ena
   fadeTime = fadeTime;
   alarmIsOn = false;
   // alarmTime = // TODO: Do I actually need to initially set this? If not, remove initial set time from EFFECTS
+}
+
+// EFFECTS: Returns a pointer to the instance of AlarmSystem if initialized
+//          else returns nullptr
+AlarmSystem& AlarmSystem::getInstance(uint8_t fadeTime, uint8_t clk, uint8_t dat, uint8_t ena, uint8_t ledPin) {
+  static AlarmSystem instance(fadeTime, clk, dat, ena, ledPin);
+  return instance;
+}
+
+// EFFECTS: initializes instance of AlarmSystem, sets initialized=true
+void AlarmSystem::init(uint8_t fadeTime, uint8_t clk, uint8_t dat, uint8_t ena, uint8_t ledPin) {
+  static AlarmSystem instance(fadeTime, clk, dat, ena, ledPin);
 }
 
 // EFFECTS: Updates the state of the light and clock as necessary
@@ -20,7 +33,7 @@ void AlarmSystem::update(InputEvent i) {
   if ((i == InputEvent::SelectButtonPressed) && (lightController.lightIsOn())) {
     lightController.setBrightness(0); // Turn light off if on on selectButtonPressed
   }
-  if (nowIsTime(this->getFadeTime(alarmTime)) && alarmIsOn && !lightController.lightIsOn()) {
+  if (nowIsTime(getInstance().getFadeTime(alarmTime)) && alarmIsOn && !lightController.lightIsOn()) {
     // Turn light on:
     lightController.increaseBrightness();
     // setup wait time
@@ -39,10 +52,10 @@ void AlarmSystem::update(InputEvent i) {
 Ds1302::DateTime AlarmSystem::getFadeTime(Ds1302::DateTime alarmTime) {
   Ds1302::DateTime fadeStartTime;
 
-  if (alarmTime.minute >= this->fadeTime) {
-    fadeStartTime.minute = alarmTime.minute - this->fadeTime;
+  if (alarmTime.minute >= getInstance().fadeTime) {
+    fadeStartTime.minute = alarmTime.minute - getInstance().fadeTime;
   } else {
-    int minLeft = this->fadeTime - alarmTime.minute;
+    int minLeft = getInstance().fadeTime - alarmTime.minute;
     fadeStartTime.minute = 60 - minLeft;
     if (alarmTime.hour > 0) fadeStartTime.hour = alarmTime.hour - 1; 
     else fadeStartTime.hour = 23;

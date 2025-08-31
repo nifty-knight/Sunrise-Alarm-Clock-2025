@@ -18,7 +18,7 @@ class DisplayController {
     unsigned long startTime;
     bool displayOn;
 
-    AlarmSystem alarmSystem;
+    // AlarmSystem alarmSystem;
 
     void on();
     void off();
@@ -29,7 +29,7 @@ class DisplayController {
     // void escape();
 
   public:
-    DisplayController(uint8_t rs, uint8_t enable, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7, int readTime, int noActivityTime, uint8_t backlightPin, AlarmSystem alarmSystem);
+    DisplayController(uint8_t rs, uint8_t enable, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7, int readTime, int noActivityTime, uint8_t backlightPin);
     void update(InputEvent i);
 };
 

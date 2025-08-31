@@ -18,9 +18,13 @@ class AlarmSystem {
     LightController lightController;
     bool nowIsTime(Ds1302::DateTime t);
     Ds1302::DateTime getFadeTime(Ds1302::DateTime alarmTime);
+    AlarmSystem(uint8_t fadeTime, uint8_t clk, uint8_t dat, uint8_t ena, uint8_t ledPin);
+
 
   public:
-    AlarmSystem(uint8_t fadeTime, uint8_t clk, uint8_t dat, uint8_t ena, uint8_t ledPin);
+    // AlarmSystem(uint8_t fadeTime, uint8_t clk, uint8_t dat, uint8_t ena, uint8_t ledPin);
+    static AlarmSystem& getInstance(uint8_t fadeTime=0, uint8_t clk=0, uint8_t dat=0, uint8_t ena=0, uint8_t ledPin=0);
+    void init(uint8_t fadeTime, uint8_t clk, uint8_t dat, uint8_t ena, uint8_t ledPin); // must be called before alarmsystem is called
     void update(InputEvent i);
     Ds1302::DateTime getAlarmTime();
     bool getAlarmState();

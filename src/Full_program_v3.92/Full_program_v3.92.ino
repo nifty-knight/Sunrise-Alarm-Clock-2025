@@ -1,27 +1,28 @@
 #include "AlarmSystem.h"
 #include "DisplayController.h"
 #include "InputController.h"
+// #include <HardwareSerial.h>
 
 // Pin numbers for the RTC Module - TODO: maybe I don't need these data members stored here, just add documentation for where they should go in rtc constructor
 const uint8_t PIN_CLK = 7;
 const uint8_t PIN_DAT = 6;
 const uint8_t PIN_ENA = 5;  // RST on the module itself
 
-DisplayController displayController(13, 11, 10, 8, 3, 2, 3500, 20000, A5, 
-                                    AlarmSystem(20, 7, 6, 5, 9));
+DisplayController displayController(13, 11, 10, 8, 3, 2, 3500, 20000, A5);
 InputController inputController(A3, A4, A1, A0);
 
 // Main file where program is run
 
 void setup() {
-
+  // Serial.begin(9600); // used for troubleshooting
+  AlarmSystem::getInstance(20, 7, 6, 5, 9);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   InputEvent i = inputController.update();
   displayController.update(i);
-  // alarmSystem.update(i); // note: this is done inside displayController
+  AlarmSystem::getInstance().update(i);
   
 }
 
