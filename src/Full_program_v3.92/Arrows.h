@@ -1,51 +1,12 @@
 #ifndef ARROWS_H
 #define ARROWS_H
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 // Represents character arrays for arrows stored in lcd
-byte UpArrow[8] = {
-  0b00000,
-  0b00000,
-  0b00000,
-  0b00100,
-  0b01110,
-  0b11111,
-  0b00000,
-  0b00000
-};
-
-byte DownArrow[8] = {
-  0b00000,
-  0b00000,
-  0b11111,
-  0b01110,
-  0b00100,
-  0b00000,
-  0b00000,
-  0b00000
-};
-
-byte RightArrow[8] = {
-  0b00000,
-  0b01000,
-  0b01100,
-  0b01110,
-  0b01110,
-  0b01100,
-  0b01000,
-  0b00000
-};
-
-byte LeftArrow[8] = {
-  0b00000,
-  0b00010,
-  0b00110,
-  0b01110,
-  0b01110,
-  0b00110,
-  0b00010,
-  0b00000
-};
+extern byte UpArrow[8];
+extern byte DownArrow[8];
+extern byte RightArrow[8];
+extern byte LeftArrow[8];
 
 #endif
