@@ -16,6 +16,7 @@ class RangedSelectionPage : public GenericPage {
     RangedSelectionPage(String line1, String line2, int minn, int maxn, int step);
     void display() override;
     void joystickResponse(Direction d) override;
+    void select() override; // TODO: add function in cpp
     void increase();
     void decrease();
 

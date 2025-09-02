@@ -15,6 +15,8 @@ class MenuItem {
     }; // use super() in subclasses
     virtual void display() = 0;
     virtual void joystickResponse(Direction d) = 0;
+    virtual bool hasChildren() = 0;
+    virtual void select() = 0;
 };
 
 #endif

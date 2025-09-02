@@ -8,7 +8,7 @@ class Page : public GenericPage {
     Page(String line1, String line2);
     void display() override;
     void joystickResponse(Direction d) override {}; // Regular pages do nothing on joystick response
-
+    void select(); // TODO: add function in cpp
 };
 
 #endif
