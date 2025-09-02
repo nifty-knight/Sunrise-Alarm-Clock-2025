@@ -1,7 +1,6 @@
 #include "AlarmSystem.h"
 #include "DisplayController.h"
 #include "InputController.h"
-// #include <HardwareSerial.h>
 
 // Pin numbers for the RTC Module - TODO: maybe I don't need these data members stored here, just add documentation for where they should go in rtc constructor
 const uint8_t PIN_CLK = 7;
@@ -27,9 +26,9 @@ void loop() {
 }
 
 /* Current coding TODOs:
-- Next: refactor menu hierarchy pages so that each MenuItem takes in a pointer to a custom selectAction() as a parameter,
-//      and then runs it in the select() function
+- Check everywhere you put <variable> = <variable> that the field is actually being changed, not just the function parameter
 - Record somewhere when done that the menu structure in this refactored system changes menu display from the original - there is no longer a readTime, menu stays on until changed with buton press
+- Combine public enums into a single header file
 - Ok we're going to skip the unit testing for now - too much trouble for not enough value
 - Uncomment headers that were commented out for testing purposes (Clock.h, )
 - Add one-line class description above class declaration for all .h files
@@ -50,5 +49,7 @@ DONE:
 - Modify all includes to include .h, not .cpp
 - Refactored AlarmSystem as Singleton class
 - redesign MenuItem and subs so that Menus/pages both have select function;
+- refactor menu hierarchy pages so that each MenuItem takes in a pointer to a custom selectAction() as a parameter
+- Refactor period to be enum so that it's not "magic number"
 
 */
