@@ -27,6 +27,9 @@ void loop() {
 }
 
 /* Current coding TODOs:
+- Next: refactor menu hierarchy pages so that each MenuItem takes in a pointer to a custom selectAction() as a parameter,
+//      and then runs it in the select() function
+- Record somewhere when done that the menu structure in this refactored system changes menu display from the original - there is no longer a readTime, menu stays on until changed with buton press
 - Ok we're going to skip the unit testing for now - too much trouble for not enough value
 - Uncomment headers that were commented out for testing purposes (Clock.h, )
 - Add one-line class description above class declaration for all .h files
@@ -45,5 +48,7 @@ DONE:
 - Create test scenarios for all functions (don't implement a full testing framework YET)
 - Add .h files for all .cpp files
 - Modify all includes to include .h, not .cpp
+- Refactored AlarmSystem as Singleton class
+- redesign MenuItem and subs so that Menus/pages both have select function;
 
 */
