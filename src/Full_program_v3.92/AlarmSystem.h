@@ -30,7 +30,7 @@ class AlarmSystem {
     void update(InputEvent i);
     Ds1302::DateTime getAlarmTime();
     bool getAlarmState();
-    void setAlarmTime(Period period, uint8_t hr, uint8_t min); // TODO: create function in cpp
+    void setAlarmTime(Period period, uint8_t hr, uint8_t min); 
     void setCurrentTime(Period period, uint8_t hr, uint8_t min); // TODO: create function in cpp
     void setAlarmState(bool s);
     void daylightSavingsChange(bool plus); // TODO: Could make this bool since only two states- +1hr or -1hr

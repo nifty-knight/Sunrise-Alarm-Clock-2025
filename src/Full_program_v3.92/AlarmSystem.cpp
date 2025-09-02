@@ -96,6 +96,17 @@ void AlarmSystem::setAlarmTime(Ds1302::DateTime t) {
   alarmIsOn = true;
 }
 
+// MODIFIES: alarmTime, alarmIsOn
+// EFFECTS: Sets alarmTime to correct time given the period, hr, min chosen by the user
+void AlarmSystem::setAlarmTime(Period p, uint8_t hr, uint8_t min) {
+  // TODO: stub
+}
+
+// EFFECTS: Sets current time to correct time given the period, hr, min chosen by the user
+void AlarmSystem::setCurrentTime(Period p, uint8_t hr, uint8_t min) {
+  // TODO: stub
+}
+
 // MODIFIES: alarmIsOn
 // EFFECTS: sets alarmIsOn to s
 /*Test cases
