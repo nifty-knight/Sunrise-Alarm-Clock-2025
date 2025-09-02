@@ -18,6 +18,11 @@ void Menu::joystickResponse(Direction d) {
 
 }
 
+// EFFECTS: runs selectAction(), displays first child, resets index
+void Menu::select() {
+  // TODO: stub
+}
+
 // REQUIRES: index is valid and within range of pages
 // EFFECTS: Shows message for child menuItem at given index
 // Tested in hardware - ensure that the page at the correct index is being displayed

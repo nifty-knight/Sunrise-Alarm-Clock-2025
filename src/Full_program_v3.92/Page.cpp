@@ -9,3 +9,8 @@ Page::Page(String line1, String line2) : GenericPage(line1, line2) {
 void Page::display() {
   // TODO: stub
 }
+
+// EFFECTS: Runs selectAction(), returns user display to the main menu
+void Page::select() {
+  // TODO: stub
+}
