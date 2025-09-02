@@ -4,6 +4,7 @@
 #include "InputEvent.h"
 #include "Clock.h"
 #include "LightController.h"
+#include "Period.h"
 #include <Ds1302.h>
 
 // Controls the functionality of the clock & alarm system 
@@ -19,6 +20,7 @@ class AlarmSystem {
     bool nowIsTime(Ds1302::DateTime t);
     Ds1302::DateTime getFadeTime(Ds1302::DateTime alarmTime);
     AlarmSystem(uint8_t fadeTime, uint8_t clk, uint8_t dat, uint8_t ena, uint8_t ledPin);
+    void setAlarmTime(Ds1302::DateTime t);
 
 
   public:
@@ -28,7 +30,8 @@ class AlarmSystem {
     void update(InputEvent i);
     Ds1302::DateTime getAlarmTime();
     bool getAlarmState();
-    void setAlarmTime(Ds1302::DateTime t);
+    void setAlarmTime(Period period, uint8_t hr, uint8_t min); // TODO: create function in cpp
+    void setCurrentTime(Period period, uint8_t hr, uint8_t min); // TODO: create function in cpp
     void setAlarmState(bool s);
     void daylightSavingsChange(bool plus); // TODO: Could make this bool since only two states- +1hr or -1hr
 
