@@ -13,7 +13,7 @@ class Menu : public MenuItem {
     uint8_t numPages; // length of pages array; using uint8_t limits number to 255 max pages
 
   public:
-    Menu(String line1, String line2, MenuItem* pages, uint8_t numPages);
+    Menu(String line1, String line2, void (*selectAction)(), MenuItem* pages, uint8_t numPages);
     void display() override;
     void joystickResponse(Direction d) override;
     void select() override; // TODO: add function in cpp

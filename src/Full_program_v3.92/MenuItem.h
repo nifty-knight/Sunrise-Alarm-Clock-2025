@@ -8,11 +8,13 @@ class MenuItem {
   protected:
     String line1;
     String line2;
+    void (*action)();
   public:
-    MenuItem(String line1, String line2) {
+    MenuItem(String line1, String line2, void (*selectAction)()) {
       line1 = line1;
       line2 = line2;
-    }; // use super() in subclasses
+      action = selectAction;
+    };
     virtual void display() = 0;
     virtual void joystickResponse(Direction d) = 0;
     virtual bool hasChildren() = 0;

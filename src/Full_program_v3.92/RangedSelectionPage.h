@@ -13,7 +13,7 @@ class RangedSelectionPage : public GenericPage {
 
   public:
     // TODO: change from ints to uint8_t if trying to save space
-    RangedSelectionPage(String line1, String line2, int minn, int maxn, int step);
+    RangedSelectionPage(String line1, String line2, void (*selectAction)(), int minn, int maxn, int step);
     void display() override;
     void joystickResponse(Direction d) override;
     void select() override; // TODO: add function in cpp

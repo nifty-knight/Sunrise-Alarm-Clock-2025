@@ -6,7 +6,7 @@
 
 class GenericPage : public MenuItem {
   public:
-    GenericPage(String line1, String line2) : MenuItem(line1, line2) {};
+    GenericPage(String line1, String line2, void (*selectAction)()) : MenuItem(line1, line2, *selectAction) {};
     virtual void display() override = 0;
     virtual void joystickResponse(Direction d) override = 0;
     virtual void select() override = 0;

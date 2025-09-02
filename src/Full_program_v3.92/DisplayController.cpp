@@ -140,11 +140,13 @@ void DisplayController::resetActivityTimer() {
   startTime = millis();
 }
 
+// TODO: delete later; only for compiling purposes
+void stub() {};
 // REQUIRES: history is not empty; the screen must be on and displaying when this is called
 // EFFECTS: Returns the current page displayed to the user 
 MenuItem* DisplayController::getCurrentPage() {
   // TODO: stub
-  Page item("", "");
+  Page item("", "", stub);
   return &item;
 }
 

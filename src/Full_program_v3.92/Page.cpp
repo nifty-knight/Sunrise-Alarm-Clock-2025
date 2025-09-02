@@ -1,7 +1,7 @@
 #include "Page.h"
 
 // EFFECTS: Initializes page with given message
-Page::Page(String line1, String line2) : GenericPage(line1, line2) {
+Page::Page(String line1, String line2, void (*selectAction)()) : GenericPage(line1, line2, *selectAction) {
   // TODO: stub
 }
 

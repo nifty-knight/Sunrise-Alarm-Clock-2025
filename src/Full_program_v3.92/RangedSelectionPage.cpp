@@ -2,7 +2,7 @@
 
 // REQUIRES: minn and maxn are 1-2 digit numbers
 // EFFECTS: Initializes page variables (minn, maxn inclusive); sets current to minimum
-RangedSelectionPage::RangedSelectionPage(String line1, String line2, int minn, int maxn, int step) : GenericPage(line1, line2), minn(minn), maxn(maxn), step(step) {
+RangedSelectionPage::RangedSelectionPage(String line1, String line2, void (*selectAction)(), int minn, int maxn, int step) : GenericPage(line1, line2, *selectAction), minn(minn), maxn(maxn), step(step) {
   // TODO: stub
 }
 
