@@ -60,8 +60,8 @@ However, currently any set alarm will have to be reset if the Arduino loses powe
 - Include a function to prevent the user from setting an alarm less than fadetime mins from now
 - add ability to set fadetime to user menu (increments of 5 mins, max 60 mins?)
 - Edit program to use getFadeStartTime() instead of setFadeStartTime() - all tests for program first - this is refactoring
-- Check that all functions to do with milliseconds and longs are subtraction - no addition to prevent rollover errors
 - Modify setHour() and setMin() functions to reduce coupling of cursor variable with magic number
+- Create a stack class and refactor program to use it for keeping track of menu history instead of a basic array
 - Add function so that looking at menus doesn't affect the light turning on or not - multithreading/multiprocessing?
 - Add functionality so that alarm time and alarm state are saved even if the Arduino loses power/resets
 - Add fun messages to print to lcd using displayTime
