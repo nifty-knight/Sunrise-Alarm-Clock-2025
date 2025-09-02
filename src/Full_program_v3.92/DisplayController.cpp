@@ -1,5 +1,5 @@
 #include "DisplayController.h"
-#include "Arrows.h"
+
 
 // EFFECTS: initializes needed variables + output pin for LED
 DisplayController::DisplayController(uint8_t rs, uint8_t enable, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7, int readTime, int noActivityTime, uint8_t backlightPin) : 
@@ -181,5 +181,15 @@ void DisplayController::displayTimePage() {
 // MODIFIES: index, history, historySize
 // EFFECTS: Displays first page of the main menu
 void DisplayController::displayMainMenu() {
+  // TODO: stub
+}
+
+// EFFECTS: calls AlarmSystem's setAlarmTime with stored period, hr, min
+void DisplayController::setAlarmTime() {
+  // TODO: stub
+}
+
+// EFFECTS: calls AlarmSystem's setCurrentTime with stored period, hr, min
+void DisplayController::setCurrentTime() {
   // TODO: stub
 }

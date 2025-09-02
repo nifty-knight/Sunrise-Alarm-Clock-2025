@@ -4,6 +4,8 @@
 #include "InputEvent.h"
 #include "AlarmSystem.h"
 #include "Direction.h"
+#include "Arrows.h"
+#include "Period.h"
 #include "Menu.h"
 #include "Page.h"
 #include <LiquidCrystal.h>
@@ -25,6 +27,10 @@ class DisplayController {
     // TODO: create a stack class to use instead of array
     uint8_t historySize; // Keeps track of current number of pages in history
 
+    Period period; // TODO: may change this to enum or a different struct to save space
+    uint8_t hr;
+    uint8_t min;
+
     void on();
     void off();
     void setBacklight(bool s);
@@ -36,8 +42,6 @@ class DisplayController {
     void increaseIndex() { index++; };
     void decreaseIndex() { index--; };
 
-    // void select(); // Might use in implementation - don't have it all figured out yet
-
   public:
     DisplayController(uint8_t rs, uint8_t enable, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7, int readTime, int noActivityTime, uint8_t backlightPin);
     void update(InputEvent i);
@@ -46,7 +50,11 @@ class DisplayController {
     uint8_t getIndex() { return index; };
     void resetIndex() { index = 0; };
     void resetMenuHierarchy();
-
+    void setPeriod(Period p) { period = p; };
+    void setHour(uint8_t h) { hr = h; };
+    void setMin(uint8_t m) { min = m; };
+    void setAlarmTime();
+    void setCurrentTime();
 };
 
 #endif
