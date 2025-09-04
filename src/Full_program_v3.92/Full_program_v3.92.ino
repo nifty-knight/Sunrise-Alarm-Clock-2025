@@ -26,6 +26,8 @@ void loop() {
 }
 
 /* Current coding TODOs:
+- Figure out a system to implement set alarm and set time
+- Finish adding the correct 1st line/2nd line messages to all menus/pages
 - Check everywhere you put <variable> = <variable> that the field is actually being changed, not just the function parameter
 - Record somewhere when done that the menu structure in this refactored system changes menu display from the original - there is no longer a readTime, menu stays on until changed with buton press
 - Combine public enums into a single header file
