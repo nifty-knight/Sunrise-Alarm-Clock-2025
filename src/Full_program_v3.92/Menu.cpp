@@ -3,7 +3,7 @@
 
 // REQUIRES: pages contains equal to or less than the max number of pages allowed in Menu.h
 // EFFECTS: Initializes menu, adds pages to menu
-Menu::Menu(String line1, String line2, void (*selectAction)(), MenuItem* pages, uint8_t numPages) : MenuItem(line1, line2, *selectAction), pages(pages), numPages(numPages) {
+Menu::Menu(String line1, String line2, void (*selectAction)(), MenuItem** pages, uint8_t numPages) : MenuItem(line1, line2, *selectAction), pages(pages), numPages(numPages) {
   
   // TODO: stub
 }

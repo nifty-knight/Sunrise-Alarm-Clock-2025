@@ -9,11 +9,11 @@ class Menu : public MenuItem {
     // MenuItem* pages[5]; // note that this is a "magic number" hard limit on the max number of pages in a menu
     // TODO: how can I replace this magic number? Look up any alternative solutions
 
-    MenuItem* pages; // pointer to an array; pages = children = subs
+    MenuItem** pages; // pointer to an array; pages = children = subs
     uint8_t numPages; // length of pages array; using uint8_t limits number to 255 max pages
 
   public:
-    Menu(String line1, String line2, void (*selectAction)(), MenuItem* pages, uint8_t numPages);
+    Menu(String line1, String line2, void (*selectAction)(), MenuItem** pages, uint8_t numPages);
     void display() override;
     void joystickResponse(Direction d) override;
     void select() override; // TODO: add function in cpp
