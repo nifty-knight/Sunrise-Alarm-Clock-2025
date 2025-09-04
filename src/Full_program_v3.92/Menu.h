@@ -5,7 +5,7 @@
 #include "Direction.h"
 
 class Menu : public MenuItem {
-  private:
+  protected:
     // MenuItem* pages[5]; // note that this is a "magic number" hard limit on the max number of pages in a menu
     // TODO: how can I replace this magic number? Look up any alternative solutions
 
