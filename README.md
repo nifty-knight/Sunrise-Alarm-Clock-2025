@@ -7,7 +7,7 @@ Note that Full_program_v3.5 is the most updated version; v4 is still in progress
 
 For those who don't want to click suspicious hyperlinked text: https://www.instructables.com/DIY-Sunrise-Alarm-Clock-With-Arduino/
 
-For a condensed and more technical description of the project, read the Project Description pdf.
+For a condensed and more technical description of the project, read the Project Description pdf. Note that the corresponding code can be found in the oo-refactoring branch of this repository.
 
 ## Clock User Instructions
 
